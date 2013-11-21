@@ -1,0 +1,25 @@
+/*** ZS-R0R0 ***/
+A+S->A
+S<C+B->B
+B
+
+/*** ZS-RNRN ***/
+A+S->A
+S/(2E)*180/pi->T
+Abs(2ESin(T))->S
+T+C->C
+S<C+B->B
+T+C->C
+B
+
+/*** ZS-R0RN ***/
+A+S->A
+EF->U
+S**2/(6U)*180/pi->T
+S-S**5/(40U**2)+S**9/(3456U**4)-S**13/(599040U**6)+S**17/(175472640U**8)->N
+N/(Cos(Abs T))->S
+T+C->C
+S<C+B->B
+2T+C->C
+B
+

@@ -1,0 +1,22 @@
+"X+Yi"?X
+0->A
+X->T
+
+Lbl 1
+"X+Yi"?Y
+ReP(X)*ImP(Y)-ReP(Y)*ImP(X)+A->A
+Y->X
+Do
+   Cls
+   "7:Next   9:End"
+   ?->O
+LpWhile O!=7 And O!=9
+If O=7
+Then Goto 1
+Else Goto E
+IfEnd   
+
+Lbl E
+ReP(X)*ImP(T)-ReP(T)*ImP(X)+A->A
+"Area:"
+A/2

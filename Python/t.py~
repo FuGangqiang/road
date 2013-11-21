@@ -1,0 +1,6 @@
+import road
+
+f = open("d.txt")
+for line in f:
+    l=float(line.strip())
+    print("L={} >>> H={}".format(l, road.yh(l)))

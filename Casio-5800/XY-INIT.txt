@@ -1,0 +1,58 @@
+/*** XY-INIT-DATA ***/
+Do
+   Cls
+   "7:ZXY  9:YXY"
+   "CHOOSE"?->O
+LpWhile O!=7 And O!=9
+
+If O=7
+Then Prog "DATA-XY-Z"
+Else Prog "DATA-XY-Y"
+IfEnd
+
+/*** XY-INIT-L ***/
+Lbl A
+?L
+If L<Z[1] Or L>=Z[Z-9]
+Then "[OUT RANGE]"
+     Goto A
+IfEnd
+
+0->I
+While L>=Z[10I+1]
+   I+1->I
+WhileEnd
+I-1->I
+
+Z[10I+1]->A
+Z[1OI+2]->B
+Z[10I+3]->C
+Z[10I+4]->D
+Z[10I+5]->E
+L-A->S
+If D=0 And D=E    ; 直线线元 M=0
+Then 0->M
+Else If D!=0 And D=E    ; 圆曲线线元 M=1
+     Then 1->M
+     Else Z[10I+6]->F
+     	  If D=0 And D!=E       ; 缓和曲线线元 M=2
+	  Then 2->M
+	  Else If E=0 And E!=D      ; 反向缓和曲线 M=3
+	       Then 3->M            ; 反转缓和曲线
+	       	    -Z[10(I+1)+1]->A
+	       	    Z[10(I+1)+2]->B
+	       	    Z[10(I+1)+3]+180->C
+	       	    -D->E
+	       	    0->D
+	       	    -A-L->S
+	       Else "[UNKNOWN LINE STYLE]"
+	       	    Stop
+	       IfEnd
+	  IfEnd
+     IfEnd
+IfEnd
+A->O
+B->P
+C->Q
+Z[10(I+1)+1]-Z[10I+1]->J
+0->I

@@ -1,0 +1,109 @@
+/*** FS-R0R0 ***/
+Lbl A
+P->B
+Q->C
+J-I->K
+(I+J)/2->L
+
+If K<0.001
+Then L->S
+     Prog "ZS-R0R0"
+     Abs(X-B)->S
+     X-P->V
+     Arg(V/1<C)->W
+     If W<0 And W>-180 Or W>180
+     Then -S->S
+     IfEnd
+     Goto E
+Else K/4->K
+     I+K->S
+     Prog "ZS-R0R0"
+     B->G
+     P->B
+     Q->C
+     I+3K->S
+     Prog "ZS-R0R0"
+     If Abs(X-G)>Abs(X-B)
+     Then L->I
+     Else L->J
+     IfEnd
+     Goto A
+IfEnd
+
+Lbl E
+
+/*** FS-RNRN ***/
+Lbl A
+
+P->B
+Q->C
+J-I->K
+(I+J)/2->L
+
+If K<0.001
+Then L->S
+     Prog "ZS-RNRN"
+     Abs(X-B)->S
+
+     B+Abs(E)<(C+90E/Abs(E))->R
+     If Abs(R-X)>Abs(E)
+     Then -S->S
+     IfEnd
+     If E<0
+     Then -S->S
+     IfEnd
+     Goto E
+Else K/4->K
+     I+K->S
+     Prog "ZS-RNRN"
+     B->G
+     P->B
+     Q->C
+     I+3K->S
+     Prog "ZS-RNRN"
+     If Abs(X-G)>Abs(X-B)
+     Then L->I
+     Else L->J
+     IfEnd
+     Goto A
+IfEnd
+
+Lbl E
+
+/*** FS-R0RN ***/
+Lbl A
+
+P->B
+Q->C
+J-I->K
+(I+J)/2->L
+
+If K<0.001
+Then L->S
+     Prog "ZS-RORN"
+     Abs(X-B)->S
+
+     B+Abs(E)<(C+90E/Abs(E))->R
+     If Abs(R-X)>Abs(E)
+     Then -S->S
+     IfEnd
+     If E<0
+     Then -S->S
+     IfEnd
+     Goto E
+Else K/4->K
+     I+K->S
+     Prog "ZS-R0RN"
+     B->G
+     P->B
+     Q->C
+     I+3K->S
+     Prog "ZS-R0RN"
+     If Abs(X-G)>Abs(X-B)
+     Then L->I
+     Else L->J
+     IfEnd
+     Goto A
+IfEnd
+
+Lbl E

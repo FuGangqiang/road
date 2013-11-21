@@ -1,0 +1,34 @@
+/*** LS ***/
+Prog "XY-INIT-DATA"
+
+Lbl A
+Prog "XY-INIT-L"
+"X+Yi"?->X
+
+If M=0
+Then Prog "FS-R0R0"
+Else If M=1
+     Then Prog "FS-RNRN"
+     Else Prog "FS-RORN"
+          If M=3
+          Then -O->O
+               -L->L
+               -S->S	  
+          IfEnd
+     IfEnd
+IfEnd
+O+L->L
+L
+S
+
+Do
+   Cls
+   "0:EXIT  1:AGAIN"
+   "CHOOSE"?->O
+LpWhile O!=0 And O!=1
+If O=0
+Then Goto E
+Else Goto A
+IfEnd
+
+Lbl E

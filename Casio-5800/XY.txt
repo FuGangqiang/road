@@ -1,0 +1,49 @@
+/*** XY ***/
+Prog "XY-INIT-DATA"
+Prog "XY-INIT-L"
+
+Lbl R
+If M=0
+Then Prog "ZS-R0R0"
+Else If M=1
+     Then Prog "ZS-RNRN"
+     Else Prog "ZS-R0RN"
+	      If M=3
+	      Then C+180->C
+	           -A->A
+	      IfEnd
+     IfEnd
+IfEnd
+B
+
+Lbl M
+Do
+   Cls
+   "0:EXIT  4:BACK"
+   "1:Z  2:Y  3:H"
+   "CHOOSE"?->M
+LpWhile M!=0 And M!=1 And M!=2 And M!=3 And M!=4
+If M=0
+Then Goto E
+IfEnd
+If M=4
+Then P->B
+     Q->C
+     Goto M
+IfEnd
+
+B->P
+C->Q
+M-1->M
+If M=0
+Then "<"?->T
+     T+C->C
+Else If M=2
+     Then "Ls"?->F
+     IfEnd
+     "R"?->E
+IfEnd
+"S"?->S
+Goto R
+
+Lbl E

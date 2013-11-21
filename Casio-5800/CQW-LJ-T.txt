@@ -1,0 +1,46 @@
+Prog "H"
+8->Z[1]
+0->Z[2]
+12->Z[3]
+1.5->Z[4]
+12->Z[11]
+14->Z[12]
+35->Z[13]
+1.75->Z[14]
+999999->Z[21]
+37->Z[22]
+999999->Z[23]
+2->Z[24]
+H-0.025->H
+Cls
+?S
+S-1->S
+"G"?->G
+
+H->V
+0->I
+While S>Z[10I+3]
+   H-Z[10I+1]->H
+   I+1->I
+WhileEnd
+(S-Z[10I+2])/Z[10I+4]->T
+If T<0
+Then 0->T
+IfEnd
+H-G-T->Q
+
+V->H
+0->I
+While H-Z[10I+1]>G
+   H-Z[10I+1]->H
+   I+1->I
+WhileEnd
+Z[10I+2]+(H-G)Z[1OI+4]-S->P
+
+"HX-CQW: +W   -N"
+P
+"SX-CQW: +S   -X"
+Q
+H-G->R
+"->STEP"
+R

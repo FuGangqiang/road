@@ -1,0 +1,37 @@
+/*** H ***/
+Do
+   Cls
+   "7:ZH   9:YH"
+   ?->O
+LpWhile O!=7 And O!=9
+If O=7
+Then Prog "DATA-H-Z"
+Else Prog "DATA-H-Y"
+IfEnd
+
+Lbl A
+?L
+If L<Z[1] Or L>=Z[Z-9]
+Then "[OUT RANGE]"
+     Goto A
+IfEnd
+
+0->I
+While L>=Z[10I+1]
+   I+1->I
+WhileEnd
+I-1->I
+
+Z[10I+2]+(L-Z[10I+1])Z[10I+5]/100->H
+If L<Z[10I+1]+Z[10I+4]
+Then H+(Z[10I+1]+Z[10I+4]-L)**2/(2Z[10i+3])->H
+Else If L>Z[10(I+1)+1]-Z[10(I+1)+4]
+     Then H+(L-Z[10(I+1)+1]+Z[10(I+1)+4])**2/(2Z[10(I+1)+3])->H
+     IfEnd
+IfEnd
+
+If O=7
+Then "ZH"
+Else "YH"
+IfEnd
+H
